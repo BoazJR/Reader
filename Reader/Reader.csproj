@@ -49,15 +49,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Lips.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>Reader.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="NAudio">
-      <HintPath>..\NAudio-1-7-2-Release\NAudio.dll</HintPath>
+      <HintPath>NAudio-1-7-2-Release\NAudio.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -174,6 +173,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Taskbar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Lips.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
