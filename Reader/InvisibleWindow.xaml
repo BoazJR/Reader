@@ -1,0 +1,24 @@
+﻿<Window x:Name="InvisiWindow" x:Class="Reader.InvisibleWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Height="0" 
+        Width="0" 
+        Background="{x:Null}" 
+        AllowsTransparency="True" 
+        WindowStyle="None" 
+        Visibility="Visible" 
+        ResizeMode="NoResize" 
+        ShowActivated="False" 
+        Icon="Resources/Lips.png"
+        Activated="App_Activated" >
+
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo>
+            <TaskbarItemInfo.ThumbButtonInfos>
+                <ThumbButtonInfoCollection>
+                <ThumbButtonInfo ImageSource="{StaticResource SettingsImage}" Description="Settings" Click="ThumbButtonInfo_Click"/>
+                </ThumbButtonInfoCollection>
+            </TaskbarItemInfo.ThumbButtonInfos>
+        </TaskbarItemInfo>
+    </Window.TaskbarItemInfo>
+</Window>

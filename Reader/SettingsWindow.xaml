@@ -1,0 +1,95 @@
+﻿<Window x:Name="Settings" x:Class="Reader.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Settings" 
+        Height="403" 
+        Width="638" 
+        Icon="Resources/Lips.png" 
+        WindowStartupLocation="CenterScreen" 
+        Background="#FF474747"
+        Deactivated="Settings_Deactivated" Visibility="Visible" 
+        AllowsTransparency="True" WindowStyle="None" MouseDown="Settings_MouseDown"
+        >
+
+    <Grid Margin="0,0,2,10">
+        <Slider x:Name="SpeedSlider" Value="{Binding Path=speed, Mode=TwoWay}" HorizontalAlignment="Left" Margin="83,10,0,0" VerticalAlignment="Top" Width="199" Height="27" RenderTransformOrigin="0.5,0.5" Minimum="-10" SmallChange="1">
+            <Slider.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.124"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Slider.RenderTransform>
+        </Slider>
+        <Label x:Name="Speed_Lable" Content="Speed:&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.237,0.462" Width="102" Height="27" Foreground="White"/>
+        <ComboBox x:Name="NameList" SelectedItem="{Binding Path=voiceName, Mode=TwoWay}" HorizontalAlignment="Left" Margin="79,39,0,0" VerticalAlignment="Top" Width="203"/>
+        <Label x:Name="VoiceLable" Content="Voice&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" Width="64" Height="24" Foreground="White"/>
+
+        <ListView Height="184" HorizontalAlignment="Left" Margin="10,66,0,0" Name="regExList" 
+                  VerticalAlignment="Top" Width="616" ItemsSource="{Binding RegExs}" ScrollViewer.CanContentScroll="True">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="On" Width="30">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <CheckBox IsChecked="{Binding IsActive}" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Name"  Width="115">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Name, UpdateSourceTrigger=PropertyChanged}" Width="100"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Regular Expression Pattern" Width="315">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Pattern, UpdateSourceTrigger=PropertyChanged}" Width="300"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Replace with"  Width="85">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBox Text="{Binding Replacement, UpdateSourceTrigger=PropertyChanged}" Width="70"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Delete" Width="50">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Button Content="Delete" Click="DeleteRegEx" CommandParameter="{Binding }"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+        <Button x:Name="AddRegExButton" Content="Add Regular Expression" HorizontalAlignment="Left" Margin="484,41,0,0" VerticalAlignment="Top" Width="142" RenderTransformOrigin="-0.32,0.35" Click="AddRegExButton_Click"/>
+        <Button Content="Load Default" HorizontalAlignment="Left" Margin="404,41,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click"/>
+        <Button Content="X" HorizontalAlignment="Left" Margin="570,13,0,0" VerticalAlignment="Top" Width="56" FontWeight="Bold" Background="Red" Click="Button_Click_1"/>
+        <CheckBox   HorizontalAlignment="Left" Margin="609,368,0,0" VerticalAlignment="Top" Width="17" IsChecked="{Binding UseVisibleWindow}" RenderTransformOrigin="0.118,0.467" Checked="CheckBox_Checked" />
+        <Label Content="Start With Visible Window:" HorizontalAlignment="Left" Margin="453,362,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.737,-0.308" Width="151" Foreground="White"/>
+        <RichTextBox HorizontalAlignment="Left" Margin="10,255,0,0" VerticalAlignment="Top" Width="616" Foreground="White" Height="39" Background="Transparent">
+            <FlowDocument>
+                <Paragraph>
+                    You can use regular expressions to replace patterns of text so that the program will pronaunce them differently. For more info http://en.wikipedia.org/wiki/Regular_expression
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <RichTextBox HorizontalAlignment="Left" Margin="11,299,0,0" VerticalAlignment="Top" Width="172" Foreground="White" Height="84" Background="Transparent" BorderBrush="{x:Null}">
+            <FlowDocument>
+                <Paragraph>
+                    In invisible window mode open settings like so:
+                </Paragraph>
+                <Paragraph>
+                    Double click lips icon in task bar to read and pause.
+                </Paragraph>
+            </FlowDocument>
+        </RichTextBox>
+        <Image HorizontalAlignment="Left" Height="94" Margin="188,299,0,0" VerticalAlignment="Top" Width="116" Source="Resources/CloseButton.png"/>
+    </Grid>
+</Window>
